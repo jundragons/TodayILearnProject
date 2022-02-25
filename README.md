@@ -1,5 +1,12 @@
 # TodayILearnProject
-Make Today I Learn application for Django framework
+매일 공부한 것을 기록하는 웹페이지
+
+
+
+## Development Environment
+
+- Language - Python, Django
+- IDE - PyCharm
 
 
 
