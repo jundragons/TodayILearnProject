@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 
 # User Model
 class User(models.Model):
@@ -26,6 +25,17 @@ class Post(models.Model):
     category_id = models.ForeignKey('blog.Categories', on_delete=models.CASCADE,
                                     related_name='post')
     title = models.CharField(max_length=200)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+
+# Comment Model
+class Comment(models.Model):
+    comment_id = models.AutoField(primary_key = True)
+    user_id = models.ForeignKey('blog.User', on_delete=models.CASCADE,
+                                related_name='comment')
+    post_id = models.ForeignKey('blog.Post', on_delete=models.CASCADE,
+                                related_name='comment')
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
