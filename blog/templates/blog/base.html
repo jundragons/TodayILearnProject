@@ -6,9 +6,11 @@
         <meta charset="UTF-8">
         <title>Today I learn</title>
     </head>
-
     <body>
-        {% block content %}
-        {% endblock %}
+    {% include "header.html" %}
+    <!-- 삽입될 내용 Start-->
+    {% block content %}
+    {% endblock %}
+    <!-- End-->
     </body>
 </html>
