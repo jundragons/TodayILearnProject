@@ -75,9 +75,17 @@ WSGI_APPLICATION = 'todayIlearn.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_blog', # DB명
+        'USER': 'root', # 데이터베이스 계정
+        'PASSWORD':'dkssud12140512!', # 계정 비밀번호
+        'HOST':'localhost', # 데이테베이스 IP
+        'PORT':'3306', # 데이터베이스 port
     }
 }
 
