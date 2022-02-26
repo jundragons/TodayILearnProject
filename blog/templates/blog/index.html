@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Today I learn</title>
+</head>
+<body>
+  <h1>Main</h1>
+  {% for user in users %}
+        <p>
+            <a href="/post_list/{{user.user_id}}/">{{user.nickname}}</a>
+        </p>
+  {% endfor %}
+</body>
+</html>
