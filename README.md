@@ -12,4 +12,4 @@
 
 # ERD
 
-![image-20220225173743850](C:\Users\Junyong\AppData\Roaming\Typora\typora-user-images\image-20220225173743850.png)
+![erd](https://user-images.githubusercontent.com/55189658/155839171-fd03fc13-290f-4ccd-98e0-285a44657279.png)
