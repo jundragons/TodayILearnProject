@@ -18,9 +18,9 @@ class Categories(models.Model):
     user_id = models.ForeignKey('blog.User', on_delete=models.CASCADE,
                                 related_name='categories')
     def __str__(self):
-        return 'category_id: ' + self.category + \
-               ' 소유자:' + self.user_id +\
-               ' 카테고리: ' + self.category
+        return 'category_id: ' + str(self.category_id) + \
+               ' / 카테고리: ' + self.category + \
+               ' / user: ' + str(self.user_id)
 # Post Model
 class Post(models.Model):
     post_id = models.AutoField(primary_key = True)
@@ -34,11 +34,11 @@ class Post(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return 'post_id: ' + self.post_id + \
-               ' user_id: ' + self.user_id + \
+        return 'post_id: ' + str(self.post_id) + \
+               ' user_id: ' + str(self.user_id) + \
                ' title: ' + self.title + \
-               ' category ' + self.category_id + \
-               ' content ' + self.content
+               ' category ' + str(self.category_id) + \
+               ' content ' + str(self.content)
 
 # Comment Model
 class Comment(models.Model):
@@ -50,3 +50,8 @@ class Comment(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return 'comment_id: ' + str(self.comment_id) + \
+               ' / post_id: ' + str(self.post_id) + \
+               ' / content: ' + self.content
