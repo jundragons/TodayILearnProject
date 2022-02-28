@@ -20,12 +20,10 @@ def post_list(request, id):
 
     posts = Post.objects.filter(user=id).order_by('-created_at')
 
-    paginator = Paginator(post_list, 10)  # 페이지당 10개씩 보여주기
+    paginator = Paginator(posts, 10)  # 페이지당 10개씩 보여주기
     page_obj = paginator.get_page(page)
-
-    context = {'post_list': page_obj}
-    return render(request, 'blog/post_list.html', context,
-                  {'posts': posts, 'id': id})
+    context = {'posts': page_obj, 'id': id}
+    return render(request, 'blog/post_list.html', context)
 
 
 def post_detail(request, id, post_id):

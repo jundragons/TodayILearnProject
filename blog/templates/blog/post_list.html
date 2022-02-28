@@ -30,5 +30,6 @@
             </tbody>
         </table>
         <a href="/post/create/{{id}}" class="btn btn-primary">글쓰기</a>
+        {% include 'blog/pagination.html' with page=posts %}
     </div>
 {% endblock %}
