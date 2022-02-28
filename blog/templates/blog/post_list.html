@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load blog_filter %}
     {% block content %}
     <div class="container my-3">
         <table class="table">
@@ -14,7 +15,9 @@
             {% if posts %}
             {% for post in posts %}
             <tr>
-                <td>{{ forloop.counter }}</td>
+                <td>
+                    {{ posts.paginator.count|sub:posts.start_index|sub:forloop.counter0|add:1 }}
+                </td>
                 <td>
                     <a href="/post/{{id}}/{{post.post_id}}">{{ post.title }}</a>
                 </td>
