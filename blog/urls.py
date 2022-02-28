@@ -9,8 +9,12 @@ urlpatterns = [
     path('', views.index, name='index'),
     # http://localhost:8080 (login)
     path('post/<int:id>/', views.post_list, name='post_list'),
-    # http://localhost:8080/post/<int:user_id>/create/
+    # post create
     path('post/create/<int:id>', views.post_create, name='post_create'),
+    # post detail
+    path('post/<int:id>/<int:post_id>', views.post_detail, name='post_detail'),
+    # post edit
+    path('post/edit/<int:id>/<int:post_id>', views.post_edit, name='post_edit'),
     # login
     path('login/', auth_views.LoginView.as_view(
         template_name='registration/login.html'), name='login'),
