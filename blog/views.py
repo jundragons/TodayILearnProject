@@ -5,24 +5,48 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.contrib.auth.models import User
-from .models import Post, Comment
+from .models import Post, Comment, Categories
 from .forms import PostForm, UserForm, CommentForm
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 def index(request):
-    user_list = User.objects.all()
-    return render(request, 'blog/index.html', {'users': user_list})
+    if request.user.is_authenticated:
+        return post_list(request, request.user.id)
+    else:
+        return render(request, 'blog/index.html')
 
 
 def post_list(request, id):
     page = request.GET.get('page', '1')  # 페이지
+    kw = request.GET.get('kw', '')  # 검색어
+    ca = request.GET.get('ca', '')
+    so = request.GET.get('so', 'recent')  # 정렬기준
 
-    posts = Post.objects.filter(user=id).order_by('-created_at')
+
+
+    # 정렬
+    if so == 'recent':
+        posts = Post.objects.filter(user=id).order_by('-created_at')
+    else:   #오래된순
+        posts = Post.objects.filter(user=id).order_by('created_at')
+
+    # 카테고리별 검색
+    if ca:
+        posts = posts.filter(category=ca)
+
+    elif kw:
+        posts = posts.filter(
+            Q(title__icontains=kw) |  # 제목검색
+            Q(content__icontains=kw)  # 내용검색
+        ).distinct()
 
     paginator = Paginator(posts, 10)  # 페이지당 10개씩 보여주기
     page_obj = paginator.get_page(page)
-    context = {'posts': page_obj, 'id': id}
+
+    category = Categories.objects.filter(user=id)
+    context = {'posts': page_obj, 'id': id, 'category': category, 'page': page, 'kw': kw, 'so': so}
     return render(request, 'blog/post_list.html', context)
 
 
@@ -60,6 +84,7 @@ def post_delete(request, post_id):
     else:
         post.delete()
     return redirect('blog:post_list', id=request.user.id)
+
 
 @login_required(login_url='blog:login')
 def post_create(request, id):
@@ -140,7 +165,8 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)  # 사용자 인증
             login(request, user)  # 로그인
-            return redirect('blog:index')
+            return redirect('blog:post_list', id=user.id)
+
     else:
         form = UserForm()
     return render(request, 'registration/signup.html', {'form': form})
