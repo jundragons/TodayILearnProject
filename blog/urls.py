@@ -15,6 +15,12 @@ urlpatterns = [
     path('post/<int:id>/<int:post_id>', views.post_detail, name='post_detail'),
     # post edit
     path('post/edit/<int:id>/<int:post_id>', views.post_edit, name='post_edit'),
+    # comment create
+    path('comment/create/<int:post_id>/', views.comment_create, name='comment_create'),
+    # comment edit
+    path('comment/modify/<int:comment_id>/', views.comment_modify, name='comment_modify'),
+    # comment delete
+    path('comment/delete/<int:comment_id>/', views.comment_delete, name='comment_delete'),
     # login
     path('login/', auth_views.LoginView.as_view(
         template_name='registration/login.html'), name='login'),
