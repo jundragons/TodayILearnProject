@@ -1,9 +1,17 @@
 {% extends 'blog/base.html' %}
     {% block content %}
-  <h1>Main</h1>
-  {% for user in users %}
-        <p>
-            <a href="/post/{{user.id}}/">{{user.username}}</a>
-        </p>
-  {% endfor %}
+    <h1>Today I Learn</h1>
+    <p>Today I learn에 방문 해주셔서 감사합니다.</p>
+    <p>매일 배운 것을 작성하는 TIL 블로그입니다.</p>
+    <p>모든 기능은 로그인 후에 이용 가능합니다.</p><br/>
+    <h3>TIL 기능</h3>
+        <ul>
+            <li>회원가입</li>
+            <li>글쓰기</li>
+            <li>글 삭제 및 수정</li>
+            <li>댓글 입력</li>
+            <li>댓글 삭제 및 수정</li>
+            <li>글 검색 기능</li>
+            <li>카테고리, 작성일자 순 정렬 기능</li>
+        </ul>
 {% endblock %}
