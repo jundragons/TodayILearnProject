@@ -15,6 +15,8 @@ urlpatterns = [
     path('post/<int:id>/<int:post_id>', views.post_detail, name='post_detail'),
     # post edit
     path('post/edit/<int:id>/<int:post_id>', views.post_edit, name='post_edit'),
+    # post delete
+    path('post/delete/<int:post_id>', views.post_delete, name='post_delete'),
     # comment create
     path('comment/create/<int:post_id>/', views.comment_create, name='comment_create'),
     # comment edit

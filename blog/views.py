@@ -51,6 +51,17 @@ def post_edit(request, id, post_id):
     return render(request, 'blog/post_form.html', context)
 
 
+@login_required(login_url='blog:login')
+def post_delete(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    if request.user != post.user:
+        messages.error(request, '댓글삭제권한이 없습니다')
+        return redirect('blog:post_detail', id=request.user.id, post_id=post_id)
+    else:
+        post.delete()
+    return redirect('blog:post_list', id=request.user.id)
+
+@login_required(login_url='blog:login')
 def post_create(request, id):
     if request.method == "POST":
         form = PostForm(request.user, request.POST)

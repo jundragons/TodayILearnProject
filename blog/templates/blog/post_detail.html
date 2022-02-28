@@ -18,7 +18,10 @@
     {% if request.user == post.user %}
     <div class="my-3">
         <a href="/post/edit/{{user.id}}/{{post.post_id}}" class="btn btn-sm btn-outline-secondary">수정</a>
+        <a href="#" class="delete btn btn-sm btn-outline-secondary"
+       data-uri="/post/delete/{{post.post_id}}">삭제</a>
     </div>
+
     {% endif %}
     <!-- 질문 댓글 Start -->
     <div class="mt-3">
