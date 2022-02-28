@@ -1,7 +1,12 @@
 {% load static %}
 <!doctype html>
 <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+<script src="{% static 'jquery-3.4.1.min.js' %}"></script>
 <link rel="stylesheet" type="text/css" href="{% static './css/style.css' %}">
+<!-- 자바스크립트 Start -->
+{% block script %}
+{% endblock %}
+<!-- 자바스크립트 End -->
 <html lang="ko">
     <head>
         <meta charset="UTF-8">
