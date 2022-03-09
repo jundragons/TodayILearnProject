@@ -5,6 +5,7 @@ from .models import Post, Categories, Comment
 
 
 class PostForm(forms.ModelForm):
+
     class Meta:
         model = Post
         fields = ('title', 'content', 'category')
@@ -12,7 +13,6 @@ class PostForm(forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
         self.fields['category'].queryset = Categories.objects.filter(user=user)
-
 
 class CommentForm(forms.ModelForm):
     class Meta:
