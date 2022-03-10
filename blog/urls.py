@@ -25,11 +25,17 @@ urlpatterns = [
     path('comment/delete/<int:comment_id>/', views.comment_delete, name='comment_delete'),
     # category list
     path('category/<int:user_id>/', views.category_list, name='category_list'),
+    # category create
+    path('category/create/<str:value>/', views.category_create, name='category_create'),
+    # category modify
+    path('category/modify/<str:before>/<str:value>/', views.category_modify, name='category_modify'),
+    # category delete
+    path('category/delete/<int:category_id>/', views.category_delete, name='category_delete'),
     # login
     path('login/', auth_views.LoginView.as_view(
         template_name='registration/login.html'), name='login'),
-    #logout
+    # logout
     path('logout/', auth_views.LogoutView.as_view(),name='logout'),
-    #signup
+    # signup
     path('signup/', views.signup, name='signup')
 ]

@@ -18,20 +18,36 @@
             <td>{{ forloop.counter }}</td>
             <td>{{ cate }}</td>
             <td>
-                <a href="/category/modify/{{cate}}" class="btn btn-primary">수정</a>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#categoryModal" data-value="{{cate}}">
+                수정
+                </button>
             </td>
             <td>
-                <a href="#" class="btn btn-danger">삭제</a>
+                <a href="#" class="delete btn btn-danger"
+                   data-uri="/category/delete/{{cate.category_id}}">삭제</a>
             </td>
         </tr>
         {% endfor %}
         {% endif %}
         </tbody>
     </table>
-    <a href="#" class="btn btn-primary">카테고리 추가</a>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#categoryModal">
+        카테고리 추가
+    </button>
+    {% include "./category_modal.html" %}
 </div>
 
+{% endblock %}
 
-
-
+{% block script %}
+<script>
+$(document).ready(function(){
+    $(".delete").on('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = $(this).data('uri');
+        }
+    });
+});
+</script>
 {% endblock %}
