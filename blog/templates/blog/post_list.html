@@ -61,6 +61,7 @@
             </tbody>
         </table>
         <a href="/post/create/{{id}}" class="btn btn-primary">글쓰기</a>
+        <a href="/category/{{id}}" class="btn btn-primary">카테고리 관리</a>
         {% include 'blog/pagination.html' with page=posts %}
     </div>
     <form id="searchForm" method="get" action="/post/{{id}}">

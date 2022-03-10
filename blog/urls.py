@@ -23,6 +23,8 @@ urlpatterns = [
     path('comment/modify/<int:comment_id>/', views.comment_modify, name='comment_modify'),
     # comment delete
     path('comment/delete/<int:comment_id>/', views.comment_delete, name='comment_delete'),
+    # category list
+    path('category/<int:user_id>/', views.category_list, name='category_list'),
     # login
     path('login/', auth_views.LoginView.as_view(
         template_name='registration/login.html'), name='login'),

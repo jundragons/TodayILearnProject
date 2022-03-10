@@ -21,10 +21,8 @@ def index(request):
 def post_list(request, id):
     page = request.GET.get('page', '1')  # 페이지
     kw = request.GET.get('kw', '')  # 검색어
-    ca = request.GET.get('ca', '')
+    ca = request.GET.get('ca', '')  # 카테고리 정렬
     so = request.GET.get('so', 'recent')  # 정렬기준
-
-
 
     # 정렬
     if so == 'recent':
@@ -151,6 +149,17 @@ def comment_delete(request, comment_id):
         print("ok")
         comment.delete()
     return redirect('blog:post_detail', id=request.user.id, post_id=comment.post.post_id)
+
+
+@login_required(login_url='blog:login')
+def category_list(request, user_id):
+    # user = get_object_or_404(User, user=user_id)
+    # if request.user != user:
+    #     messages.error(request, '카테고리 삭제 권한이 없습니다')
+    #     return redirect('blog:post_list', id=user_id)
+    category = Categories.objects.filter(user_id=user_id)
+    print(category)
+    return render(request, 'blog/category_list.html', {'categories': category})
 
 
 def signup(request):

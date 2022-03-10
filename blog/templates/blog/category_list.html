@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<div class="container my-3">
+    <table class="table">
+        <thead>
+            <tr class="text-center thead-dark">
+                <th>#</th>
+                <th style="width:50%">카테고리</th>
+                <th>수정</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if categories %}
+        {% for cate in categories %}
+        <tr style="text-align: center">
+            <td>{{ forloop.counter }}</td>
+            <td>{{ cate }}</td>
+            <td>
+                <a href="/category/modify/{{cate}}" class="btn btn-primary">수정</a>
+            </td>
+            <td>
+                <a href="#" class="btn btn-danger">삭제</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+    <a href="#" class="btn btn-primary">카테고리 추가</a>
+</div>
+
+
+
+
+{% endblock %}
