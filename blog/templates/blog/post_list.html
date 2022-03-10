@@ -35,6 +35,7 @@
                 <th style="width:50%">제목</th>
                 <th>글쓴이</th>
                 <th>작성일시</th>
+                <th>카테고리</th>
             </tr>
             </thead>
             <tbody>
@@ -49,6 +50,7 @@
                 </td>
                 <td>{{ post.user.username }}</td>  <!-- 글쓴이 추가 -->
                 <td>{{ post.created_at }}</td>
+                <td>{{ post.category }}</td>
             </tr>
             {% endfor %}
             {% else %}
@@ -68,6 +70,7 @@
         <input type="hidden" id="ca" name="ca" value="{{ ca }}">
     </form>
 {% endblock %}
+
 {% block script %}
 <script type='text/javascript'>
 $(document).ready(function(){
@@ -97,7 +100,7 @@ $(document).ready(function(){
 
     $("#btn_search").on('click', function() {
         $("#kw").val($(".kw").val());
-        $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+        $("#page").val(1);
         $("#searchForm").submit();
     });
 });
