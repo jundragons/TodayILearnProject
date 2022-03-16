@@ -6,10 +6,7 @@ from ..forms import UserForm
 
 
 def index(request):
-    if request.user.is_authenticated:
-        return post_list(request, request.user.id)
-    else:
-        return render(request, 'blog/index.html')
+    return render(request, 'blog/index.html')
 
 
 def signup(request):
