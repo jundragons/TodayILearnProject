@@ -7,7 +7,7 @@ app_name = 'blog'
 urlpatterns = [
     # http://localhost:8080 (not login)
     path('', base_views.index, name='index'),
-    # http://localhost:8080 (login)
+    # post_list (user)
     path('post/<int:id>/', post_views.post_list, name='post_list'),
     # post create
     path('post/create/<int:id>', post_views.post_create, name='post_create'),
