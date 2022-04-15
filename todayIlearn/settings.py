@@ -26,9 +26,9 @@ SECRET_KEY = 'django-insecure-1pgfp09!_4u@p39*(*e23&o0jju928zh=xlx#3djec$gyf=$*i
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '127.0.0.1',
     'localhost',
-    '13.124.122.135',
-    '127.0.0.1'
+    '13.124.122.135'
 ]
 
 
@@ -79,18 +79,18 @@ WSGI_APPLICATION = 'todayIlearn.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
     # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'django_blog', # DB명
-    #     'USER': 'root', # 데이터베이스 계정
-    #     'PASSWORD':'dkssud12140512!', # 계정 비밀번호
-    #     'HOST':'localhost', # 데이테베이스 IP
-    #     'PORT':'3306', # 데이터베이스 port
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_db',    # DB명
+        'USER': 'python',   # 데이터베이스 계정
+        'PASSWORD': 'python',   # 계정 비밀번호
+        'HOST': 'djangomysql.c82qucqi3orl.ap-northeast-2.rds.amazonaws.com',    # 데이테베이스 IP
+        'PORT': '3306',      # 데이터베이스 port
+    }
 }
 
 
